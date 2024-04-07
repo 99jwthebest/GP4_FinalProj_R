@@ -101,9 +101,19 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	GetMesh()->SetAngularDamping(bMovingOnGround ? 0.0f : 3.0f);
 
 
-	ChaosVehicleMovement->GetForwardSpeed();
+
+
 	// format the speed to KPH or MPH
-	float FormattedSpeed = bIsMPHP ? 0.022f : 0.036f;
+	float FormattedSpeed = ChaosVehicleMovement->GetForwardSpeed() * (bIsMPHP ? 0.022f : 0.036f);
+	UE_LOG(LogTemp, Warning, TEXT("Default Formatted Speed: %f !!"), FormattedSpeed)
+
+	float InterpFloatSpringArm = FMath::FInterpTo(BackSpringArm->CameraLagMaxDistance, (FormattedSpeed > 80.0f ? 10.0f : 1.0f), Delta, 0.5f);
+	BackSpringArm->CameraLagMaxDistance = InterpFloatSpringArm;
+
+	float InterpFloatBackCam = FMath::FInterpTo(BackCamera->FieldOfView, (FormattedSpeed > 80.0f ? 115.0f : 90.0f), Delta, 0.5f);
+	BackCamera->SetFieldOfView(InterpFloatBackCam);
+
+
 
 
 	// realign the camera yaw to face front
