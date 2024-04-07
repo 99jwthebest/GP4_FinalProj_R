@@ -30,7 +30,8 @@ protected:
 	void GameEnd(bool Win);
 	void StartCountdown();
 	void LoseOutOfTime();
-	void WinCrossTheFinishLine();
+	UFUNCTION(BlueprintCallable, Category = "Game Mode")
+		void WinCrossTheFinishLine();
 
 
 

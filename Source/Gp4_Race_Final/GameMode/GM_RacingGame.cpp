@@ -2,6 +2,7 @@
 
 
 #include "Gp4_Race_Final/GameMode/GM_RacingGame.h"
+#include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
 
@@ -15,6 +16,8 @@ AGM_RacingGame::AGM_RacingGame()
 void AGM_RacingGame::BeginPlay()
 {
 	Super::BeginPlay();
+
+	//UGameplayStatics::GetAllActorsOfClass(GetWorld(), );
 
 	StartCountdown();
 }
