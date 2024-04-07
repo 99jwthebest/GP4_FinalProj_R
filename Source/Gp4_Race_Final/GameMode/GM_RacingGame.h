@@ -42,6 +42,7 @@ protected:
 	float StartCountdownDuration;
 	FTimerHandle TimeRemainingTimer;
 	float StartTimerDuration;
-
+	UPROPERTY(EditAnywhere)
+	TArray<AActor*> CheckpointActorArray;
 
 };

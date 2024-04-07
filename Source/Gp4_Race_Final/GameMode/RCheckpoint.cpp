@@ -16,6 +16,8 @@ ARCheckpoint::ARCheckpoint()
 	//CameraBoom->TargetArmLength = 400.0f; // The camera follows at this distance behind the character	
 	//CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
+	IsFinishLine = false;
+
 }
 
 // Called when the game starts or when spawned
@@ -30,5 +32,13 @@ void ARCheckpoint::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+bool ARCheckpoint::GetIsFinishLine()
+{
+	if(IsFinishLine)
+		return true;
+
+	return false;
 }
 

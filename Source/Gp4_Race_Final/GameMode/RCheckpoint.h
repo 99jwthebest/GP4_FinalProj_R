@@ -25,8 +25,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, Category = "Game Mode")
+		bool IsFinishLine;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	bool GetIsFinishLine();
 
 };

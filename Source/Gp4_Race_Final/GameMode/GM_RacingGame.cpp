@@ -2,6 +2,7 @@
 
 
 #include "Gp4_Race_Final/GameMode/GM_RacingGame.h"
+#include "Gp4_Race_Final/GameMode/RCheckpoint.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
@@ -17,7 +18,18 @@ void AGM_RacingGame::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//UGameplayStatics::GetAllActorsOfClass(GetWorld(), );
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ARCheckpoint::StaticClass(), CheckpointActorArray);
+
+	// Now FoundActors contains all actors of class ARCheckpoint
+	for (AActor* Actor : CheckpointActorArray)
+	{
+		ARCheckpoint* Checkpoint = Cast<ARCheckpoint>(Actor);
+		if (Checkpoint->GetIsFinishLine())
+		{
+			// Do something with each checkpoint
+			
+		}
+	}
 
 	StartCountdown();
 }
