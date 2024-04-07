@@ -32,6 +32,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	bool GetIsFinishLine();
+	UFUNCTION(BlueprintPure, Category = "Game Mode")
+		bool GetIsFinishLine();
 
 };

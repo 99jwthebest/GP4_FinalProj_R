@@ -28,7 +28,8 @@ protected:
 	//UFUNCTION(EditDefaultsOnly, Category = "Game Mode")
 	void GameStart();
 	void GameEnd(bool Win);
-	void StartCountdown();
+	UFUNCTION(BlueprintCallable, Category = "Game Mode")
+		void StartCountdown();
 	void LoseOutOfTime();
 	UFUNCTION(BlueprintCallable, Category = "Game Mode")
 		void WinCrossTheFinishLine();

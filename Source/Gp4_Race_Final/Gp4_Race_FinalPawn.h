@@ -78,6 +78,10 @@ protected:
 	/** Keeps track of which camera is active */
 	bool bFrontCameraActive = false;
 
+	/** Controls the display of speed in Km/h or MPH */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Vehicle)
+	bool bIsMPHP = false;
+
 public:
 	AGp4_Race_FinalPawn();
 

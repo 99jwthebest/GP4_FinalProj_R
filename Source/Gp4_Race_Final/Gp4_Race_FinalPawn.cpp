@@ -100,6 +100,12 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	bool bMovingOnGround = ChaosVehicleMovement->IsMovingOnGround();
 	GetMesh()->SetAngularDamping(bMovingOnGround ? 0.0f : 3.0f);
 
+
+	ChaosVehicleMovement->GetForwardSpeed();
+	// format the speed to KPH or MPH
+	float FormattedSpeed = bIsMPHP ? 0.022f : 0.036f;
+
+
 	// realign the camera yaw to face front
 	float CameraYaw = BackSpringArm->GetRelativeRotation().Yaw;
 	CameraYaw = FMath::FInterpTo(CameraYaw, 0.0f, Delta, 1.0f);

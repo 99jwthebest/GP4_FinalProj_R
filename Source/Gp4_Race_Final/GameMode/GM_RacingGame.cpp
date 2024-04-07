@@ -18,20 +18,20 @@ void AGM_RacingGame::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ARCheckpoint::StaticClass(), CheckpointActorArray);
+	//UGameplayStatics::GetAllActorsOfClass(GetWorld(), ARCheckpoint::StaticClass(), CheckpointActorArray);
 
-	// Now FoundActors contains all actors of class ARCheckpoint
-	for (AActor* Actor : CheckpointActorArray)
-	{
-		ARCheckpoint* Checkpoint = Cast<ARCheckpoint>(Actor);
-		if (Checkpoint->GetIsFinishLine())
-		{
-			// Do something with each checkpoint
-			
-		}
-	}
+	//// Now FoundActors contains all actors of class ARCheckpoint
+	//for (AActor* Actor : CheckpointActorArray)
+	//{
+	//	ARCheckpoint* Checkpoint = Cast<ARCheckpoint>(Actor);
+	//	if (Checkpoint->GetIsFinishLine())
+	//	{
+	//		// Do something with each checkpoint
+	//		
+	//	}
+	//}
 
-	StartCountdown();
+	//StartCountdown();
 }
 
 void AGM_RacingGame::GameStart()
@@ -63,6 +63,7 @@ void AGM_RacingGame::LoseOutOfTime()
 {
 	GameEnd(false);
 }
+
 
 void AGM_RacingGame::WinCrossTheFinishLine()
 {
