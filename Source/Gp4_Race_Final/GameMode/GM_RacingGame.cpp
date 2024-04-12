@@ -70,3 +70,8 @@ void AGM_RacingGame::WinCrossTheFinishLine()
 	GetWorld()->GetTimerManager().ClearTimer(TimeRemainingTimer); // this might not work
 	GameEnd(true);
 }
+
+void AGM_RacingGame::AddTimeToTimer(int TimeToAdd)
+{
+	StartTimerDuration += TimeToAdd;
+}

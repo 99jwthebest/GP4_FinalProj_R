@@ -17,7 +17,7 @@ ARCheckpoint::ARCheckpoint()
 	//CameraBoom->bUsePawnControlRotation = true; // Rotate the arm based on the controller
 
 	IsFinishLine = false;
-
+	TimeToGive = 0;
 }
 
 // Called when the game starts or when spawned
@@ -40,5 +40,10 @@ bool ARCheckpoint::GetIsFinishLine()
 		return true;
 
 	return false;
+}
+
+int ARCheckpoint::GetTimeToGive()
+{
+	return TimeToGive;
 }
 

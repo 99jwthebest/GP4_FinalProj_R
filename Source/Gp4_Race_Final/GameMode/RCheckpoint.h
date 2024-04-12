@@ -27,6 +27,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Game Mode")
 		bool IsFinishLine;
+	UPROPERTY(EditAnywhere, Category = "Game Mode")
+		int TimeToGive;
 
 public:	
 	// Called every frame
@@ -34,5 +36,6 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Game Mode")
 		bool GetIsFinishLine();
-
+	UFUNCTION(BlueprintPure, Category = "Game Mode")
+		int GetTimeToGive();
 };

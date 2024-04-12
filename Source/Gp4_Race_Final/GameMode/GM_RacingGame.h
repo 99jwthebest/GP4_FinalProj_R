@@ -33,17 +33,21 @@ protected:
 	void LoseOutOfTime();
 	UFUNCTION(BlueprintCallable, Category = "Game Mode")
 		void WinCrossTheFinishLine();
-
+	UFUNCTION(BlueprintCallable, Category = "Game Mode")
+		void AddTimeToTimer(int TimeToAdd);
 
 
 	//UPROPERTY(VisibleAnywhere, Category = "Game Mode")
 	bool PlayerWon;
 	//UPROPERTY(EditAnywhere, Category = Movement)
 	FTimerHandle StartCountdownGameHandle;
-	float StartCountdownDuration;
-	FTimerHandle TimeRemainingTimer;
-	float StartTimerDuration;
+	UPROPERTY(BlueprintReadWrite, Category = "Game Mode")
+		float StartCountdownDuration;
+	UPROPERTY(BlueprintReadWrite, Category = "Game Mode")
+		FTimerHandle TimeRemainingTimer;
+	UPROPERTY(BlueprintReadWrite, Category = "Game Mode")
+		float StartTimerDuration;
 	UPROPERTY(EditAnywhere)
-	TArray<AActor*> CheckpointActorArray;
+		TArray<AActor*> CheckpointActorArray;
 
 };
