@@ -4,6 +4,7 @@
 #include "Gp4_Race_Final/GameMode/GM_RacingGame.h"
 #include "Gp4_Race_Final/GameMode/RCheckpoint.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "TimerManager.h"
 
 
@@ -73,5 +74,7 @@ void AGM_RacingGame::WinCrossTheFinishLine()
 
 void AGM_RacingGame::AddTimeToTimer(int TimeToAdd)
 {
-	StartTimerDuration += TimeToAdd;
+	float TimingToAdd = UKismetSystemLibrary::K2_GetTimerRemainingTimeHandle(GetWorld(), TimeRemainingTimer) + TimeToAdd;
+	GetWorld()->GetTimerManager().SetTimer(StartCountdownGameHandle, this, &AGM_RacingGame::GameStart, TimingToAdd, false);
+
 }
