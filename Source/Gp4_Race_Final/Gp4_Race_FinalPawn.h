@@ -8,6 +8,7 @@
 
 class UCameraComponent;
 class USpringArmComponent;
+class UCameraShakeSourceComponent;
 class UInputAction;
 class UChaosWheeledVehicleMovementComponent;
 struct FInputActionValue;
@@ -45,6 +46,9 @@ class AGp4_Race_FinalPawn : public AWheeledVehiclePawn
 	/** Cast pointer to the Chaos Vehicle movement component */
 	TObjectPtr<UChaosWheeledVehicleMovementComponent> ChaosVehicleMovement;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+	UCameraShakeSourceComponent* VehicleFastCameraShake;
+
 protected:
 
 	/** Steering Action */
@@ -81,6 +85,10 @@ protected:
 	/** Controls the display of speed in Km/h or MPH */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Vehicle)
 	bool bIsMPHP = false;
+
+	/** Controls the display of speed in Km/h or MPH */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Vehicle)
+	bool bCameraShakeStarted = false;
 
 public:
 	AGp4_Race_FinalPawn();

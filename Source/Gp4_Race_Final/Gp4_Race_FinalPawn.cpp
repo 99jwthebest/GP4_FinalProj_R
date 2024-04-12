@@ -6,6 +6,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Camera/CameraShakeSourceComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
@@ -45,12 +46,18 @@ AGp4_Race_FinalPawn::AGp4_Race_FinalPawn()
 	BackCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("Back Camera"));
 	BackCamera->SetupAttachment(BackSpringArm);
 
+	VehicleFastCameraShake = CreateDefaultSubobject<UCameraShakeSourceComponent>(TEXT("CameraShakeSourceCPP"));
+	VehicleFastCameraShake->SetupAttachment(GetMesh());
+
 	// Configure the car mesh
 	GetMesh()->SetSimulatePhysics(true);
 	GetMesh()->SetCollisionProfileName(FName("Vehicle"));
 
 	// get the Chaos Wheeled movement component
 	ChaosVehicleMovement = CastChecked<UChaosWheeledVehicleMovementComponent>(GetVehicleMovement());
+
+	bCameraShakeStarted = false;
+
 
 }
 
@@ -103,6 +110,7 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 
 
 
+
 	// format the speed to KPH or MPH
 	float FormattedSpeed = ChaosVehicleMovement->GetForwardSpeed() * (bIsMPHP ? 0.022f : 0.036f);
 	UE_LOG(LogTemp, Warning, TEXT("Default Formatted Speed: %f !!"), FormattedSpeed)
@@ -112,6 +120,21 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 
 	float InterpFloatBackCam = FMath::FInterpTo(BackCamera->FieldOfView, (FormattedSpeed > 80.0f ? 115.0f : 90.0f), Delta, 0.5f);
 	BackCamera->SetFieldOfView(InterpFloatBackCam);
+
+	if (FormattedSpeed > 80.0f)
+	{
+		if (!bCameraShakeStarted) 
+		{
+			VehicleFastCameraShake->Start();
+			bCameraShakeStarted = true;
+		}
+	}
+	else
+	{
+		bCameraShakeStarted = false;
+		VehicleFastCameraShake->StopAllCameraShakes(false);
+	}
+
 
 
 
