@@ -32,8 +32,6 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
 	TSubclassOf<UGp4_Race_FinalUI> VehicleUIClass;
 
-	/** Pointer to the UI widget */
-	TObjectPtr<UGp4_Race_FinalUI> VehicleUI;
 
 	// Begin Actor interface
 protected:
@@ -41,6 +39,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	/** Pointer to the UI widget */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
+	TObjectPtr<UGp4_Race_FinalUI> VehicleUI;
 
 	virtual void Tick(float Delta) override;
 

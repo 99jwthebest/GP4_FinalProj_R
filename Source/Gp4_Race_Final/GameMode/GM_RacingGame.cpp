@@ -3,6 +3,7 @@
 
 #include "Gp4_Race_Final/GameMode/GM_RacingGame.h"
 #include "Gp4_Race_Final/GameMode/RCheckpoint.h"
+#include "Gp4_Race_Final/Gp4_Race_FinalPlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "TimerManager.h"
@@ -75,6 +76,11 @@ void AGM_RacingGame::WinCrossTheFinishLine()
 void AGM_RacingGame::AddTimeToTimer(int TimeToAdd)
 {
 	float TimingToAdd = UKismetSystemLibrary::K2_GetTimerRemainingTimeHandle(GetWorld(), TimeRemainingTimer) + TimeToAdd;
-	GetWorld()->GetTimerManager().SetTimer(StartCountdownGameHandle, this, &AGM_RacingGame::GameStart, TimingToAdd, false);
+	GetWorld()->GetTimerManager().SetTimer(TimeRemainingTimer, this, &AGM_RacingGame::LoseOutOfTime, TimingToAdd, false);
+	// set Time remaining to the return value
+	/*UGameplayStatics::GetPlayerController(GetWorld(), 0);
 
+	AGp4_Race_FinalPlayerController* VehiclePlayerController = Cast<AGp4_Race_FinalPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+
+	VehiclePlayerController->VehicleUI*/
 }
