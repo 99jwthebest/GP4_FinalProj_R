@@ -125,6 +125,7 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	{
 		if (!bCameraShakeStarted) 
 		{
+			UE_LOG(LogTemp, Warning, TEXT("Camera Shaking!!!!!!"))
 			VehicleFastCameraShake->Start();
 			bCameraShakeStarted = true;
 		}
