@@ -101,7 +101,8 @@ void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* Playe
 
 void AGp4_Race_FinalPawn::BeginPlay()
 {
-	//GetWorld()->GetTimerManager().SetTimer(NitrousTimer, this, &AGp4_Race_FinalPawn::UpdateNitrousLevel, 0.2f, true); // updating nitrous with timer instead of update
+	Super::BeginPlay();
+	GetWorld()->GetTimerManager().SetTimer(NitrousTimer, this, &AGp4_Race_FinalPawn::UpdateNitrousLevel, 0.2f, true); // updating nitrous with timer instead of update
 }
 
 void AGp4_Race_FinalPawn::Tick(float Delta)
@@ -120,7 +121,7 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 
 	// format the speed to KPH or MPH
 	float FormattedSpeed = ChaosVehicleMovement->GetForwardSpeed() * (bIsMPHP ? 0.022f : 0.036f);
-	UE_LOG(LogTemp, Warning, TEXT("Default Formatted Speed: %f !!"), FormattedSpeed)
+	//UE_LOG(LogTemp, Warning, TEXT("Default Formatted Speed: %f !!"), FormattedSpeed)
 
 	float InterpFloatSpringArm = FMath::FInterpTo(BackSpringArm->CameraLagMaxDistance, (FormattedSpeed > 80.0f ? 10.0f : 1.0f), Delta, 0.5f);
 	BackSpringArm->CameraLagMaxDistance = InterpFloatSpringArm;
