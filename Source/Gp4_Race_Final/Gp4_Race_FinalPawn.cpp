@@ -107,9 +107,11 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	bool bMovingOnGround = ChaosVehicleMovement->IsMovingOnGround();
 	GetMesh()->SetAngularDamping(bMovingOnGround ? 0.0f : 3.0f);
 
+	/*float startMaxTorque = 750.0f;
+	float NitrousMaxTorque = 1200.0f;
+	ChaosVehicleMovement->SetMaxEngineTorque(NitrousMaxTorque);*/
 
-
-
+	//ChaosVehicleMovement->SetMaxEngineTorque();
 
 	// format the speed to KPH or MPH
 	float FormattedSpeed = ChaosVehicleMovement->GetForwardSpeed() * (bIsMPHP ? 0.022f : 0.036f);
@@ -144,6 +146,11 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	CameraYaw = FMath::FInterpTo(CameraYaw, 0.0f, Delta, 1.0f);
 
 	BackSpringArm->SetRelativeRotation(FRotator(0.0f, CameraYaw, 0.0f));
+}
+
+void AGp4_Race_FinalPawn::SetNitrousSpeed(float value)
+{
+	ChaosVehicleMovement->SetMaxEngineTorque(value);
 }
 
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)

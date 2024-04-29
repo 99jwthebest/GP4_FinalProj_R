@@ -105,6 +105,9 @@ public:
 
 	// End Actor interface
 
+	UFUNCTION(BlueprintCallable, Category = "Game Mode")
+	void SetNitrousSpeed(float value);
+
 protected:
 
 	/** Handles steering input */
