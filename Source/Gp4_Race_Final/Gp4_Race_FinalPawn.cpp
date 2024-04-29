@@ -57,7 +57,7 @@ AGp4_Race_FinalPawn::AGp4_Race_FinalPawn()
 	ChaosVehicleMovement = CastChecked<UChaosWheeledVehicleMovementComponent>(GetVehicleMovement());
 
 	bCameraShakeStarted = false;
-
+	NitrousLevel = 100.0f;
 
 }
 
@@ -97,6 +97,11 @@ void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* Playe
 	{
 		UE_LOG(LogTemplateVehicle, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
 	}
+}
+
+void AGp4_Race_FinalPawn::BeginPlay()
+{
+	//GetWorld()->GetTimerManager().SetTimer(NitrousTimer, this, &AGp4_Race_FinalPawn::UpdateNitrousLevel, 0.2f, true); // updating nitrous with timer instead of update
 }
 
 void AGp4_Race_FinalPawn::Tick(float Delta)
@@ -151,6 +156,38 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 void AGp4_Race_FinalPawn::SetNitrousSpeed(float value)
 {
 	ChaosVehicleMovement->SetMaxEngineTorque(value);
+}
+
+bool AGp4_Race_FinalPawn::bNitrousLevel()
+{
+	if (NitrousLevel > 0.0f)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void AGp4_Race_FinalPawn::UpdateNitrousLevel()
+{
+	UE_LOG(LogTemp, Warning, TEXT("NITROUS LEVEL: %f !!"), NitrousLevel)
+
+	if (NitrousEnabled)
+	{
+		NitrousLevel -= 3.0f;
+		float clampNitrous = FMath::Clamp(NitrousLevel, 0.0f, 100.0f);
+		NitrousLevel = clampNitrous;
+		if (NitrousLevel < 0.0f)
+		{
+			NitrousEnabled = false;
+		}
+	}
+	else
+	{
+		NitrousLevel += 0.1f;
+		float clampNitrous = FMath::Clamp(NitrousLevel, 0.0f, 100.0f);
+		NitrousLevel = clampNitrous;
+	}
 }
 
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)

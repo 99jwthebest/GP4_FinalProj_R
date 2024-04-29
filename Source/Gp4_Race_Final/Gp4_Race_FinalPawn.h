@@ -90,6 +90,15 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Vehicle)
 	bool bCameraShakeStarted = false;
 
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	float NitrousLevel;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool NitrousEnabled;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool DisableNitrous;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	FTimerHandle NitrousTimer;
+
 public:
 	AGp4_Race_FinalPawn();
 
@@ -100,13 +109,21 @@ public:
 	// End Pawn interface
 
 	// Begin Actor interface
+	// 
+	// Called when the game starts
+	virtual void BeginPlay() override;
 
 	virtual void Tick(float Delta) override;
 
 	// End Actor interface
 
-	UFUNCTION(BlueprintCallable, Category = "Game Mode")
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
 	void SetNitrousSpeed(float value);
+
+	UFUNCTION(BlueprintPure, Category = "Vehicle")
+	bool bNitrousLevel();
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	void UpdateNitrousLevel();
 
 protected:
 
