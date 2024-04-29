@@ -157,6 +157,11 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 void AGp4_Race_FinalPawn::SetNitrousSpeed(float value)
 {
 	ChaosVehicleMovement->SetMaxEngineTorque(value);
+	/*for(int i = 0; i < 3; i++)
+		ChaosVehicleMovement->SetDriveTorque(value, i);*/
+	//ChaosVehicleMovement->AddRadialImpulse(GetActorLocation(), 1000.0f, 1000000.0f, ERadialImpulseFalloff::RIF_Constant, false);
+	UE_LOG(LogTemp, Warning, TEXT("MAX TORQUE awwwwwww: %f !!"), ChaosVehicleMovement->EngineSetup.MaxTorque)
+
 }
 
 bool AGp4_Race_FinalPawn::bNitrousLevel()
