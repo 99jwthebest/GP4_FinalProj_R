@@ -117,6 +117,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Game Mode")
 	void SetNitrousSpeed(float value);
+	UFUNCTION(BlueprintPure, Category = "Vehicle")
+	bool bNitrousLevel();
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	void UpdateNitrousLevel();
 
 protected:
 

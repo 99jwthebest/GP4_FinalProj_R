@@ -99,6 +99,8 @@ void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* Playe
 	}
 }
 
+
+
 void AGp4_Race_FinalPawn::Tick(float Delta)
 {
 	Super::Tick(Delta);
@@ -151,6 +153,16 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 void AGp4_Race_FinalPawn::SetNitrousSpeed(float value)
 {
 	ChaosVehicleMovement->SetMaxEngineTorque(value);
+}
+
+bool AGp4_Race_FinalPawn::bNitrousLevel()
+{
+	return false;
+}
+
+void AGp4_Race_FinalPawn::UpdateNitrousLevel()
+{
+
 }
 
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
