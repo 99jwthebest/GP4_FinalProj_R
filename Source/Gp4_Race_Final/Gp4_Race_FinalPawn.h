@@ -90,6 +90,16 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Vehicle)
 	bool bCameraShakeStarted = false;
 
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	float NitrousLevel;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool NitrousEnabled;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool DisableNitrous;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	FTimerHandle NitrousTimer;
+
+
 public:
 	AGp4_Race_FinalPawn();
 
