@@ -17,3 +17,8 @@ void UGp4_Race_FinalUI::UpdateGear(int32 NewGear)
 	// call the Blueprint handler
 	OnGearUpdate(NewGear);
 }
+
+void UGp4_Race_FinalUI::NitrousUpdate(float InPercent)
+{
+	OnNitrousUpdate(InPercent);
+}

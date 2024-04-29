@@ -196,6 +196,11 @@ void AGp4_Race_FinalPawn::UpdateNitrousLevel()
 	}
 }
 
+float AGp4_Race_FinalPawn::GetNitrousLevel()
+{
+	return NitrousLevel;
+}
+
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
 {
 	// get the input magnitude for steering

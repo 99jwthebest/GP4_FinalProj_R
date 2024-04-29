@@ -34,6 +34,8 @@ void AGp4_Race_FinalPlayerController::Tick(float Delta)
 	{
 		VehicleUI->UpdateSpeed(VehiclePawn->GetChaosVehicleMovement()->GetForwardSpeed());
 		VehicleUI->UpdateGear(VehiclePawn->GetChaosVehicleMovement()->GetCurrentGear());
+		float dividedNitrous = VehiclePawn->GetNitrousLevel() / 100.0f;
+		VehicleUI->NitrousUpdate(dividedNitrous);
 	}
 }
 

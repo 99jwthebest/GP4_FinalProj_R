@@ -125,6 +125,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Vehicle")
 	void UpdateNitrousLevel();
 
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	float GetNitrousLevel();
+
 protected:
 
 	/** Handles steering input */
