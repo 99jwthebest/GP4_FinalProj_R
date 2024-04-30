@@ -180,6 +180,12 @@ void AGp4_Race_FinalPawn::UpdateNitrousLevel()
 
 	if (NitrousEnabled)
 	{
+
+		FVector PhysicsVelocity = GetMesh()->GetPhysicsLinearVelocity() * 10.0f;
+
+		GetMesh()->SetPhysicsLinearVelocity(PhysicsVelocity, false);
+		//GetMesh()->AddImpulse
+		
 		NitrousLevel -= 3.0f;
 		float clampNitrous = FMath::Clamp(NitrousLevel, 0.0f, 100.0f);
 		NitrousLevel = clampNitrous;
