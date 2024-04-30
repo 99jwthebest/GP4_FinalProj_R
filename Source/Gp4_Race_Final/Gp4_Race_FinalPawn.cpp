@@ -180,8 +180,8 @@ void AGp4_Race_FinalPawn::UpdateNitrousLevel()
 
 	if (NitrousEnabled)
 	{
-
-		FVector PhysicsVelocity = GetMesh()->GetPhysicsLinearVelocity() * 10.0f;
+		// Nitrous Physics
+		FVector PhysicsVelocity = GetMesh()->GetPhysicsLinearVelocity() * 1.02f;
 
 		GetMesh()->SetPhysicsLinearVelocity(PhysicsVelocity, false);
 		//GetMesh()->AddImpulse
