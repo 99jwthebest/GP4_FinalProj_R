@@ -178,12 +178,16 @@ void AGp4_Race_FinalPawn::UpdateNitrousLevel()
 {
 	UE_LOG(LogTemp, Warning, TEXT("NITROUS LEVEL: %f !!"), NitrousLevel)
 
+	/*for(int i = 0; i < 3; i++)
+		ChaosVehicleMovement->SetWheelFrictionMultiplier(i,10.0f);*/
+
+
 	if (NitrousEnabled)
 	{
 		// Nitrous Physics
-		FVector PhysicsVelocity = GetMesh()->GetPhysicsLinearVelocity() * 1.02f;
+		//FVector PhysicsVelocity = GetMesh()->GetPhysicsLinearVelocity() * 1.02f;
 
-		GetMesh()->SetPhysicsLinearVelocity(PhysicsVelocity, false);
+		//GetMesh()->SetPhysicsLinearVelocity(PhysicsVelocity, false);
 		//GetMesh()->AddImpulse
 		
 		NitrousLevel -= 3.0f;
