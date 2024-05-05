@@ -58,7 +58,7 @@ AGp4_Race_FinalPawn::AGp4_Race_FinalPawn()
 
 	bCameraShakeStarted = false;
 	NitrousLevel = 100.0f;
-
+	ZoneSteering = 1000000.0f;
 }
 
 void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -217,6 +217,14 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 	if (ZoneEnabled)
 	{
 		ChaosVehicleMovement->SetDownforceCoefficient(200.0f);
+		if (SteeringValue > 0.0f)
+		{
+			GetMesh()->AddForce(FVector::RightVector * ZoneSteering);
+		}
+		else if (SteeringValue < 0.0f)
+		{
+			GetMesh()->AddForce(-FVector::RightVector * ZoneSteering);
+		}
 	}
 	else
 	{
@@ -229,7 +237,8 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
 {
 	// get the input magnitude for steering
-	float SteeringValue = Value.Get<float>();
+	SteeringValue = Value.Get<float>();
+	UE_LOG(LogTemp, Warning, TEXT("Steering LEVEL: %f !!"), SteeringValue)
 
 	// add the input
 	ChaosVehicleMovement->SetSteeringInput(SteeringValue);

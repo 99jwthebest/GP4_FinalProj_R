@@ -102,6 +102,12 @@ protected:
 	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
 	bool ZoneEnabled;
 
+
+	UPROPERTY(BlueprintReadWrite, Category = "Steering")
+	float SteeringValue;
+	UPROPERTY(EditAnywhere)
+	float ZoneSteering;
+
 public:
 	AGp4_Race_FinalPawn();
 
