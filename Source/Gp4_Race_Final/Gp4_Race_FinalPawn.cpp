@@ -217,6 +217,8 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 	if (ZoneEnabled)
 	{
 		ChaosVehicleMovement->SetDownforceCoefficient(200.0f);
+		for(int i = 0; i < 3; i++)
+		ChaosVehicleMovement->SetTractionControlEnabled(i, true);
 		if (SteeringValue > 0.0f)
 		{
 			GetMesh()->AddForce(FVector::RightVector * ZoneSteering);
