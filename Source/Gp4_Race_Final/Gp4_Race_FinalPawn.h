@@ -99,6 +99,9 @@ protected:
 	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
 	FTimerHandle NitrousTimer;
 
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool ZoneEnabled;
+
 public:
 	AGp4_Race_FinalPawn();
 
@@ -127,6 +130,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Vehicle")
 	float GetNitrousLevel();
+
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	void UpdateZoneLevel();
 
 protected:
 

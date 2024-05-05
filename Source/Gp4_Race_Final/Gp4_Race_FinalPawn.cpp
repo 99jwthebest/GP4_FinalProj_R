@@ -178,8 +178,9 @@ void AGp4_Race_FinalPawn::UpdateNitrousLevel()
 {
 	UE_LOG(LogTemp, Warning, TEXT("NITROUS LEVEL: %f !!"), NitrousLevel)
 
-	/*for(int i = 0; i < 3; i++)
-		ChaosVehicleMovement->SetWheelFrictionMultiplier(i,10.0f);*/
+		/*for(int i = 0; i < 3; i++)
+			ChaosVehicleMovement->SetWheelFrictionMultiplier(i,10.0f);*/
+			//ChaosVehicleMovement->GetWheelState(0).
 
 
 	if (NitrousEnabled)
@@ -210,6 +211,20 @@ float AGp4_Race_FinalPawn::GetNitrousLevel()
 {
 	return NitrousLevel;
 }
+
+void AGp4_Race_FinalPawn::UpdateZoneLevel()
+{
+	if (ZoneEnabled)
+	{
+		ChaosVehicleMovement->SetDownforceCoefficient(200.0f);
+	}
+	else
+	{
+		ChaosVehicleMovement->SetDownforceCoefficient(0.3f);
+	}
+
+}
+
 
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
 {
