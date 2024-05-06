@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "WheeledVehiclePawn.h"
-#include "GameMode/GM_RacingGame.h"
 #include "Gp4_Race_FinalPawn.generated.h"
 
 class UCameraComponent;
@@ -13,7 +12,6 @@ class UCameraShakeSourceComponent;
 class UInputAction;
 class UChaosWheeledVehicleMovementComponent;
 struct FInputActionValue;
-class AGM_RacingGame;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateVehicle, Log, All);
 
@@ -50,8 +48,7 @@ class AGp4_Race_FinalPawn : public AWheeledVehiclePawn
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraShakeSourceComponent* VehicleFastCameraShake;
-
-	AGM_RacingGame* RacingGameMode;
+	
 
 protected:
 
@@ -111,6 +108,9 @@ protected:
 	float SteeringValue;
 	UPROPERTY(EditAnywhere)
 	float ZoneSteering;
+
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	bool b_pMovementEnabled;
 
 public:
 	AGp4_Race_FinalPawn();

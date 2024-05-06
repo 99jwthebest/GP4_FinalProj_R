@@ -38,7 +38,8 @@ void AGM_RacingGame::BeginPlay()
 
 void AGM_RacingGame::GameStart()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Game has started!!!"))
+	UE_LOG(LogTemp, Warning, TEXT("Game has started!!!"));
+	MovementEnabled = true;
 	GetWorld()->GetTimerManager().SetTimer(TimeRemainingTimer, this, &AGM_RacingGame::LoseOutOfTime, StartTimerDuration, false);
 	//GetWorld()->GetTimerManager().ClearTimer(TimeRemainingTimer); // this might not work
 

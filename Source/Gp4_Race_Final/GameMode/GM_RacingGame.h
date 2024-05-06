@@ -52,7 +52,7 @@ protected:
 
 
 public:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Input")
 		bool MovementEnabled = false;
 
 };

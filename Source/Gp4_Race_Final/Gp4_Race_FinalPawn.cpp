@@ -59,7 +59,6 @@ AGp4_Race_FinalPawn::AGp4_Race_FinalPawn()
 	bCameraShakeStarted = false;
 	NitrousLevel = 100.0f;
 	ZoneSteering = 1000000.0f;
-	RacingGameMode = nullptr;
 }
 
 void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -242,7 +241,7 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 
 void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
 {
-	if (!RacingGameMode->MovementEnabled)
+	if (!b_pMovementEnabled)
 	{
 		return;
 	}
@@ -257,7 +256,7 @@ void AGp4_Race_FinalPawn::Steering(const FInputActionValue& Value)
 
 void AGp4_Race_FinalPawn::Throttle(const FInputActionValue& Value)
 {
-	if (!RacingGameMode->MovementEnabled)
+	if (!b_pMovementEnabled)
 	{
 		return;
 	}
@@ -270,7 +269,7 @@ void AGp4_Race_FinalPawn::Throttle(const FInputActionValue& Value)
 
 void AGp4_Race_FinalPawn::Brake(const FInputActionValue& Value)
 {
-	if (!RacingGameMode->MovementEnabled)
+	if (!b_pMovementEnabled)
 	{
 		return;
 	}
