@@ -29,6 +29,10 @@ protected:
 		bool IsFinishLine;
 	UPROPERTY(EditAnywhere, Category = "Game Mode")
 		int TimeToGive;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Mode")
+		int NumberOfUses;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Mode")
+		int CurrentNumUsed;
 
 public:	
 	// Called every frame

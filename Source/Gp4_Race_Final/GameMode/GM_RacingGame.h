@@ -50,4 +50,9 @@ protected:
 	UPROPERTY(EditAnywhere)
 		TArray<AActor*> CheckpointActorArray;
 
+
+public:
+	UPROPERTY(EditAnywhere)
+		bool MovementEnabled = false;
+
 };
