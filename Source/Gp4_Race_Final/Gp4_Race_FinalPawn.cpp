@@ -152,6 +152,9 @@ void AGp4_Race_FinalPawn::Tick(float Delta)
 	CameraYaw = FMath::FInterpTo(CameraYaw, 0.0f, Delta, 1.0f);
 
 	BackSpringArm->SetRelativeRotation(FRotator(0.0f, CameraYaw, 0.0f));
+
+	if(!b_pMovementEnabled)
+		ChaosVehicleMovement->SetThrottleInput(0.0f);
 }
 
 void AGp4_Race_FinalPawn::SetNitrousSpeed(float value)
