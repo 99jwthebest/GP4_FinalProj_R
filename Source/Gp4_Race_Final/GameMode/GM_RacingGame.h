@@ -55,4 +55,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Input")
 		bool MovementEnabled = false;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Input")
+		bool GameIsOver = false;
+
 };

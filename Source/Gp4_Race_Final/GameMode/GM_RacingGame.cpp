@@ -53,6 +53,7 @@ void AGM_RacingGame::GameEnd(bool Win)
 		UE_LOG(LogTemp, Warning, TEXT("You Lose!!!!"))
 
 	MovementEnabled = false;
+	GameIsOver = true;
 }
 
 void AGM_RacingGame::StartCountdown()
