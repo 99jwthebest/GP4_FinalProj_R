@@ -60,6 +60,8 @@ void AGM_RacingGame::GameEnd(bool Win)
 
 	MovementEnabled = false;
 	GameIsOver = true;
+	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetShowMouseCursor(true);
+
 }
 
 void AGM_RacingGame::StartCountdown()
@@ -82,7 +84,6 @@ void AGM_RacingGame::WinCrossTheFinishLine()
 {
 	GetWorld()->GetTimerManager().ClearTimer(TimeRemainingTimer); // this might not work
 	GameEnd(true);
-	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetShowMouseCursor(true);
 }
 
 void AGM_RacingGame::AddTimeToTimer(int TimeToAdd)
