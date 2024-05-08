@@ -57,5 +57,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Input")
 		bool GameIsOver = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Input")
+		bool WinState = false;
 
 };

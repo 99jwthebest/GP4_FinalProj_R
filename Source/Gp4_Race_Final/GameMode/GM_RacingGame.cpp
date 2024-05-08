@@ -48,9 +48,15 @@ void AGM_RacingGame::GameStart()
 void AGM_RacingGame::GameEnd(bool Win)
 {
 	if (Win)
+	{
 		UE_LOG(LogTemp, Warning, TEXT("You Win!!!"))
+		WinState = Win;
+	}
 	else
+	{
 		UE_LOG(LogTemp, Warning, TEXT("You Lose!!!!"))
+
+	}
 
 	MovementEnabled = false;
 	GameIsOver = true;
@@ -58,6 +64,8 @@ void AGM_RacingGame::GameEnd(bool Win)
 
 void AGM_RacingGame::StartCountdown()
 {
+	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetShowMouseCursor(false);
+
 	UE_LOG(LogTemp, Warning, TEXT("Start Countdown..."))
 	//Delay Node(5.0f) Seconds in duration
 	GetWorld()->GetTimerManager().SetTimer(StartCountdownGameHandle, this, &AGM_RacingGame::GameStart, StartCountdownDuration, false);
@@ -74,6 +82,7 @@ void AGM_RacingGame::WinCrossTheFinishLine()
 {
 	GetWorld()->GetTimerManager().ClearTimer(TimeRemainingTimer); // this might not work
 	GameEnd(true);
+	UGameplayStatics::GetPlayerController(GetWorld(), 0)->SetShowMouseCursor(true);
 }
 
 void AGM_RacingGame::AddTimeToTimer(int TimeToAdd)
