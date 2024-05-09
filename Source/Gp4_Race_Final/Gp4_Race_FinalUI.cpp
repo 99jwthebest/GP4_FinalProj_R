@@ -22,3 +22,8 @@ void UGp4_Race_FinalUI::NitrousUpdate(float InPercent)
 {
 	OnNitrousUpdate(InPercent);
 }
+
+void UGp4_Race_FinalUI::ZoneUpdate(float InPercent)
+{
+	OnZoneUpdate(InPercent);
+}

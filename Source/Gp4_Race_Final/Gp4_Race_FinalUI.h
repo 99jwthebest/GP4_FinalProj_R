@@ -32,6 +32,8 @@ public:
 
 	void NitrousUpdate(float InPercent);
 
+	void ZoneUpdate(float InPercent);
+
 protected:
 
 	/** Implemented in Blueprint to display the new speed */
@@ -45,4 +47,8 @@ protected:
 	/** Implemented in Blueprint to display the new gear */
 	UFUNCTION(BlueprintImplementableEvent, Category = Vehicle)
 	void OnNitrousUpdate(float InPercent);
+
+	/** Implemented in Blueprint to display the new gear */
+	UFUNCTION(BlueprintImplementableEvent, Category = Vehicle)
+	void OnZoneUpdate(float InPercent);
 };

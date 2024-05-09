@@ -101,7 +101,11 @@ protected:
 	FTimerHandle NitrousTimer;
 
 	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	float ZoneLevel;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
 	bool ZoneEnabled;
+	UPROPERTY(BlueprintReadWrite, Category = Vehicle)
+	FTimerHandle ZoneTimer;
 
 
 	UPROPERTY(BlueprintReadWrite, Category = "Steering")
@@ -143,6 +147,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Vehicle")
 	void UpdateZoneLevel();
+	UFUNCTION(BlueprintCallable, Category = "Vehicle")
+	float GetZoneLevel();
 
 protected:
 

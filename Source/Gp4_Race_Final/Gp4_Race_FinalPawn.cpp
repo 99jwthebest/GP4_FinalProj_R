@@ -59,6 +59,7 @@ AGp4_Race_FinalPawn::AGp4_Race_FinalPawn()
 	bCameraShakeStarted = false;
 	NitrousLevel = 100.0f;
 	ZoneSteering = 1000000.0f;
+	ZoneLevel = 100.0f;
 }
 
 void AGp4_Race_FinalPawn::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
@@ -103,6 +104,8 @@ void AGp4_Race_FinalPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	GetWorld()->GetTimerManager().SetTimer(NitrousTimer, this, &AGp4_Race_FinalPawn::UpdateNitrousLevel, 0.2f, true); // updating nitrous with timer instead of update
+	GetWorld()->GetTimerManager().SetTimer(ZoneTimer, this, &AGp4_Race_FinalPawn::UpdateZoneLevel, 0.2f, true); // updating Zone with timer instead of update
+
 }
 
 void AGp4_Race_FinalPawn::Tick(float Delta)
@@ -225,6 +228,7 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 		/*for (int i = 0; i < 3 ; i++)
 			ChaosVehicleMovement->SetWheelSlipGraphMultiplier(i, 6.0f);*/
 
+
 		if (SteeringValue > 0.0f)
 		{
 			GetMesh()->AddForce(FVector::RightVector * ZoneSteering);
@@ -233,12 +237,28 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 		{
 			GetMesh()->AddForce(-FVector::RightVector * ZoneSteering);
 		}
+
+		ZoneLevel -= 3.0f;
+		float clampZone = FMath::Clamp(ZoneLevel, 0.0f, 100.0f);
+		ZoneLevel = clampZone;
+		if (ZoneLevel < 0.0f)
+		{
+			ZoneEnabled = false;
+		}
 	}
 	else
 	{
-		ChaosVehicleMovement->SetDownforceCoefficient(25.0f);
+		ChaosVehicleMovement->SetDownforceCoefficient(12.0f);
+		ZoneLevel += 0.1f;
+		float clampZone = FMath::Clamp(ZoneLevel, 0.0f, 100.0f);
+		ZoneLevel = clampZone;
 	}
 
+}
+
+float AGp4_Race_FinalPawn::GetZoneLevel()
+{
+	return ZoneLevel;
 }
 
 
