@@ -236,7 +236,7 @@ void AGp4_Race_FinalPawn::UpdateZoneLevel()
 	}
 	else
 	{
-		ChaosVehicleMovement->SetDownforceCoefficient(0.3f);
+		ChaosVehicleMovement->SetDownforceCoefficient(25.0f);
 	}
 
 }
